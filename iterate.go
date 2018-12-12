@@ -9,6 +9,11 @@ func (this FlexObj) Key() string {
 	return this.fieldInfoArr[this.indexPtr].key
 }
 
+// DataType ...
+func (this FlexObj) DataType() DataType {
+	return this.fieldInfoArr[this.indexPtr].dataType
+}
+
 // Value implements iterator
 func (this FlexObj) Value() interface{} {
 	// Read lock
@@ -40,6 +45,8 @@ func (this FlexObj) Err() error {
 
 // Values ...
 func (this FlexObj) Values() []interface{} {
+	this.Reset()
+
 	valArr := make([]interface{}, 0, this.numOfField)
 
 	for ; this.Next(); this.Increase() {
@@ -51,6 +58,6 @@ func (this FlexObj) Values() []interface{} {
 }
 
 // Reset sets the internal pointer of an array to its first element
-func (this FlexObj) Reset() {
+func (this *FlexObj) Reset() {
 	this.indexPtr = 0
 }

@@ -66,6 +66,7 @@ func (this *FlexObj) Set(key string, val interface{}) {
 	if IsDebug == true {
 		// NOTE: Add a DataType check only allow Primitive type and panic
 		switch reflect.ValueOf(val).Kind() {
+		//case reflect.Invalid:
 		case reflect.Bool:
 		case reflect.Int:
 		case reflect.Int8:
@@ -77,16 +78,24 @@ func (this *FlexObj) Set(key string, val interface{}) {
 		case reflect.Uint16:
 		case reflect.Uint32:
 		case reflect.Uint64:
+		//case reflect.Uintptr:
 		case reflect.Float32:
 		case reflect.Float64:
-		case reflect.Array:
-		case reflect.Slice:
-		case reflect.String:
-		case reflect.Struct:
+		//case reflect.Complex64:
+		//case reflect.Complex128:
+		//case reflect.Array:
+		//case reflect.Chan:
+		//case reflect.Func:
+		//case reflect.Interface:
 		// TODO: consider add Map as a Primitive type, but convert Map to *FlexObj (consider reflect cost)
 		//case reflect.Map:
+		//case reflect.Ptr:
+		//case reflect.Slice:
+		case reflect.String:
+		//case reflect.Struct:
+		//case reflect.UnsafePointer:
 		default:
-			panic("val is not a allowed Primitive type")
+			panic("val is not a supported Primitive type")
 		}
 	}
 

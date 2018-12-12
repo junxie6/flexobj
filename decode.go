@@ -64,16 +64,14 @@ func decode(src reflect.Value, dst reflect.Value) (err error) {
 				case reflect.TypeOf((*FlexObj)(nil)):
 					//fmt.Printf("OH YES YES YES !!!!!!!!!!!!\n")
 
-					xxx := srcVal.Elem().MethodByName("Values").Call([]reflect.Value{})
+					// NOTE: Values() return one result.
+					questionArr := srcVal.Elem().MethodByName("Values").Call([]reflect.Value{})[0]
 
-					for _, questionArr := range xxx {
-						// TODO: not fully understand. Find out how to handle []reflect.Value. It seems unecessary (Use questionArr instead)
-						//questionVal := reflect.ValueOf(questionArr.Interface().([]interface{}))
+					// TODO: not fully understand. Find out how to handle []reflect.Value. It seems unecessary (Use questionArr instead)
+					//questionVal := reflect.ValueOf(questionArr.Interface().([]interface{}))
 
-						if err = decode(questionArr, dstVal); err != nil {
-							return err
-						}
-						//fmt.Printf("%#v\n", question)
+					if err = decode(questionArr, dstVal); err != nil {
+						return err
 					}
 
 					//fmt.Printf("dstVal: %v: %v: %#v\n", dstVal.Kind(), dstVal.Type(), dstVal)
