@@ -14,8 +14,6 @@ func clone(dst *FlexObj, src *FlexObj) {
 	src.Reset()
 
 	for ; src.Next(); src.Increase() {
-		fmt.Printf("%v (%v): %v\n", src.Key(), src.DataType(), src.Value())
-
 		switch src.DataType() {
 		case Primitive:
 			dst.Set(src.Key(), src.Value())
