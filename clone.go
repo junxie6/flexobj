@@ -1,7 +1,7 @@
 package flexobj
 
 import (
-	"fmt"
+//"fmt"
 )
 
 func Clone(src *FlexObj) *FlexObj {
@@ -19,11 +19,11 @@ func clone(dst *FlexObj, src *FlexObj) {
 			dst.Set(src.Key(), src.Value())
 		case HashMap:
 			dstNew := New()
-			dst.SetHM(src.Key(), dstNew)
+			dst.SetObj(src.Key(), dstNew)
 			clone(dstNew, src.Value().(*FlexObj))
 		case OrderedMap:
 			dstNew := New()
-			dst.SetOM(src.Key(), dstNew)
+			dst.SetArr(src.Key(), dstNew)
 			clone(dstNew, src.Value().(*FlexObj))
 		default:
 			panic("Unsupported data type")

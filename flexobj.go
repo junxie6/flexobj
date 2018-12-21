@@ -9,8 +9,6 @@ import (
 // DataType ...
 type DataType uint8
 
-//type HM map[string]interface{}
-
 const (
 	Invalid DataType = iota
 	Primitive
@@ -102,8 +100,8 @@ func (this *FlexObj) Set(key string, val interface{}) {
 	this.set(key, val, Primitive)
 }
 
-// SetHM ...
-func (this *FlexObj) SetHM(key string, val *FlexObj) {
+// SetObj implies that the value being set is a hash map (object).
+func (this *FlexObj) SetObj(key string, val *FlexObj) {
 	this.set(key, val, HashMap)
 
 	// TODO: should we provide "SetM" only? (No more SetHM?)
@@ -112,8 +110,8 @@ func (this *FlexObj) SetHM(key string, val *FlexObj) {
 	//return val.(*FlexObj)
 }
 
-// SetOM ...
-func (this *FlexObj) SetOM(key string, val *FlexObj) {
+// SetArr implies that the value being set is an ordered map (associative array).
+func (this *FlexObj) SetArr(key string, val *FlexObj) {
 	this.set(key, val, OrderedMap)
 
 	// TODO: should we return???
@@ -152,13 +150,13 @@ func (this FlexObj) Get(key string) interface{} {
 	return this.get(key)
 }
 
-// GetHM ...
-func (this FlexObj) GetHM(key string) *FlexObj {
+// GetObj ...
+func (this FlexObj) GetObj(key string) *FlexObj {
 	return this.get(key).(*FlexObj)
 }
 
-// GetOM ...
-func (this FlexObj) GetOM(key string) *FlexObj {
+// GetArr ...
+func (this FlexObj) GetArr(key string) *FlexObj {
 	return this.get(key).(*FlexObj)
 }
 

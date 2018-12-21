@@ -29,11 +29,11 @@ func (this FlexObj) MarshalJSON() ([]byte, error) {
 				return nil, err
 			}
 		case HashMap:
-			if byteArr, err = json.Marshal(this.GetHM(fi.key)); err != nil {
+			if byteArr, err = json.Marshal(this.GetObj(fi.key)); err != nil {
 				return nil, err
 			}
 		case OrderedMap:
-			if byteArr, err = json.Marshal(this.GetOM(fi.key).Values()); err != nil {
+			if byteArr, err = json.Marshal(this.GetArr(fi.key).Values()); err != nil {
 				return nil, err
 			}
 		default:
