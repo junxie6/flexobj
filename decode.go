@@ -29,6 +29,13 @@ func Decode(src *FlexObj, dst interface{}) error {
 
 func decode(src reflect.Value, dst reflect.Value) (err error) {
 	switch src.Kind() {
+	case reflect.Ptr:
+		// TODO: there may be a more efficient way (instead of convert it back to interface)
+		if err = decode(reflect.ValueOf(src.Interface().(*FlexObj).data), dst); err != nil {
+			return err
+		}
+	case reflect.Struct:
+		fmt.Printf("HERE HERE HERE struct\n")
 	case reflect.Slice:
 		dst.Set(reflect.MakeSlice(dst.Type(), src.Len(), src.Cap()))
 
