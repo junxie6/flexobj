@@ -9,7 +9,7 @@ import (
 )
 
 func TestSetNestedObject(t *testing.T) {
-	// Simulating database records
+	// Simulating a database result set
 	sqlRow := []struct {
 		ExamID       uint32
 		ExamName     string
@@ -95,6 +95,7 @@ func TestSetNestedObject(t *testing.T) {
 			choice := flexobj.New()
 			choice.Set("ChoiceID", row.ChoiceID)
 			choice.Set("ChoiceName", row.ChoiceName)
+			choice.Set("IsSelected", row.IsSelected)
 			choiceArr.SetObj(choiceID, choice)
 		}
 	}
