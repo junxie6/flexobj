@@ -135,6 +135,7 @@ func (fo *FlexObj) set(key string, val interface{}, dt DataType) {
 	fo.data[key] = val
 }
 
+// IsSet ...
 func (fo *FlexObj) IsSet(key string) bool {
 	// Read lock
 	fo.RLock()
