@@ -1,7 +1,7 @@
 package flexobj_test
 
 import (
-	//"fmt"
+	"fmt"
 	"testing"
 )
 import (
@@ -62,12 +62,12 @@ func TestDecode(t *testing.T) {
 	q1c2.Set("ChoiceName", "PHP")
 
 	// Print exam data in JSON format
-	flexobj.PrintJSON(exam)
+	fmt.Printf("Output: %s\n", exam.JSONPretty())
 
 	// Decode to exam2 struct
 	exam2 := Exam{}
 	flexobj.Decode(exam, &exam2)
 
-	// Print exam2 data in JSON format
-	//flexobj.PrintJSON(exam2)
+	// Print exam2 data
+	fmt.Printf("Output: %#v\n", exam2)
 }

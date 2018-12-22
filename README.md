@@ -12,6 +12,8 @@ FlexObj makes storing the nested objects as easy as PHP associative array and it
 
 ## Examples:
 
+### Storing the database result set and outputting the data as a JSON string
+
 ### Storing the nested objects and output in JSON format
 
 ```

@@ -1,7 +1,7 @@
 package flexobj_test
 
 import (
-	//"fmt"
+	"fmt"
 	"testing"
 )
 import (
@@ -102,5 +102,5 @@ func TestSetNestedObject(t *testing.T) {
 	}
 
 	// Print  data in JSON format
-	flexobj.PrintJSON(data)
+	fmt.Printf("Output: %s\n", data.JSONPretty())
 }

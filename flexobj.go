@@ -2,6 +2,7 @@ package flexobj
 
 import (
 	//"fmt"
+	"encoding/json"
 	"reflect"
 	"sync"
 )
@@ -168,4 +169,26 @@ func (this FlexObj) get(key string) interface{} {
 	}
 
 	return v
+}
+
+func (this FlexObj) JSON() string {
+	var err error
+	var byteArr []byte
+
+	if byteArr, err = json.Marshal(this); err != nil {
+		panic(err.Error())
+	}
+
+	return string(byteArr)
+}
+
+func (this FlexObj) JSONPretty() string {
+	var err error
+	var byteArr []byte
+
+	if byteArr, err = json.MarshalIndent(this, "", "    "); err != nil {
+		panic(err.Error())
+	}
+
+	return string(byteArr)
 }

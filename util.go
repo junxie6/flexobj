@@ -1,21 +1,8 @@
 package flexobj
 
 import (
-	"encoding/json"
-	"fmt"
-	"log"
 	"strconv"
 )
-
-// PrintJSON ...
-func PrintJSON(data interface{}) {
-	// produces neatly indented output
-	if data, err := json.MarshalIndent(data, "", "    "); err != nil {
-		log.Printf("JSON marshaling failed: %s\n", err)
-	} else {
-		fmt.Printf("%s\n", data)
-	}
-}
 
 // StrToUint32 converts uint32 string to uint32 integer
 func StrToUint32(num string) uint32 {
