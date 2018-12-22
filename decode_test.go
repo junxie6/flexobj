@@ -52,6 +52,7 @@ func TestDecode(t *testing.T) {
 
 	q1c1.Set("ChoiceID", flexobj.StrToUint32(q1c1_ChoiceID))
 	q1c1.Set("ChoiceName", "Go")
+	q1c1.Set("IsSelected", 1)
 
 	// Question 1 - Choice 2
 	q1c2_ChoiceID := "2"
@@ -60,6 +61,7 @@ func TestDecode(t *testing.T) {
 
 	q1c2.Set("ChoiceID", flexobj.StrToUint32(q1c2_ChoiceID))
 	q1c2.Set("ChoiceName", "PHP")
+	q1c2.Set("IsSelected", 0)
 
 	// Print exam data in JSON format
 	fmt.Printf("Output: %s\n", exam.JSONPretty())

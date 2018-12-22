@@ -5,7 +5,7 @@ FlexObj makes storing the nested objects as easy as PHP associative array and it
 ## Features:
 * Maintain the insertion order
 * Output a FlexObj as a JSON string (MarshalJSON implements Marshaler)
-* Decode to a struct (could be used to ensure the correct data type is used)
+* Decode from a FlexObj to a struct (could be used to ensure the correct data type is used)
 * Deep clone a FlexObj
 * Iterate over a FlexObj using for loop in the insertion order
 * Go 1.11 Modules support
@@ -61,6 +61,7 @@ func main() {
 
 	q1c1.Set("ChoiceID", flexobj.StrToUint32(q1c1_ChoiceID))
 	q1c1.Set("ChoiceName", "Go")
+	q1c1.Set("IsSelected", 1)
 
 	// Question 1 - Choice 2
 	q1c2_ChoiceID := "2"
@@ -69,6 +70,7 @@ func main() {
 
 	q1c2.Set("ChoiceID", flexobj.StrToUint32(q1c2_ChoiceID))
 	q1c2.Set("ChoiceName", "PHP")
+	q1c2.Set("IsSelected", 0)
 
 	// Print exam data in JSON format
 	flexobj.PrintJSON(exam)
@@ -88,11 +90,13 @@ JSON output:
             "ChoiceArr": [
                 {
                     "ChoiceID": 1,
-                    "ChoiceName": "Go"
+                    "ChoiceName": "Go",
+                    "IsSelected": 1
                 },
                 {
                     "ChoiceID": 2,
-                    "ChoiceName": "PHP"
+                    "ChoiceName": "PHP",
+                    "IsSelected": 0
                 }
             ]
         }
