@@ -69,5 +69,5 @@ func TestDecode(t *testing.T) {
 	flexobj.Decode(exam, &exam2)
 
 	// Print exam2 data in JSON format
-	flexobj.PrintJSON(exam2)
+	//flexobj.PrintJSON(exam2)
 }
