@@ -56,7 +56,7 @@ func decode(src reflect.Value, dst reflect.Value) (err error) {
 					// NOTE: Values() return one result.
 					questionArr := srcVal.Elem().MethodByName("Values").Call([]reflect.Value{})[0]
 
-					// TODO: not fully understand. Find out how to handle []reflect.Value. It seems unecessary (Use questionArr instead)
+					// TODO: not fully understand. Find out how to handle []reflect.Value. It seems unnecessary (Use questionArr instead)
 					//questionVal := reflect.ValueOf(questionArr.Interface().([]interface{}))
 
 					if err = decode(questionArr, dstVal); err != nil {
