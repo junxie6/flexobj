@@ -1,5 +1,7 @@
 # FlexObj
 
+[![Build Status](https://travis-ci.org/junxie6/flexobj.svg?branch=master)](https://travis-ci.org/junxie6/flexobj)
+
 FlexObj makes storing the nested objects as easy as PHP associative array and it maintains the insertion order. It is most useful when handling the SQL database result set.
 
 ## Features:
