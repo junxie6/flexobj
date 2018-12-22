@@ -1,6 +1,6 @@
 # FlexObj
 
-FlexObj makes storing the nested objects as easy as PHP associative array and it maintains the insertion order. It is most useful when handling the result data of the SQL database queries.
+FlexObj makes storing the nested objects as easy as PHP associative array and it maintains the insertion order. It is most useful when handling the SQL database result set.
 
 ## Features:
 * Maintain the insertion order
