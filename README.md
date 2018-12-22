@@ -32,6 +32,39 @@ import (
 
 ## Examples:
 
+### Set primitive type data (boolean, integer, float, string)
+
+exampleSetPrimitiveType.go:
+```go
+package main
+
+import (
+	"fmt"
+)
+import (
+	"github.com/junxie6/flexobj"
+)
+
+func main() {
+	data := flexobj.New()
+	data.Set("ExamID", 1)
+	data.Set("ExamName", "this is a 2018 exam")
+	data.Set("IsDone", false)
+
+	// Print data in JSON format
+	fmt.Printf("Output: %s\n", data.JSONPretty())
+}
+```
+
+JSON output:
+```json
+{
+    "ExamID": 1,
+    "ExamName": "this is a 2018 exam",
+    "IsDone": false
+}
+```
+
 ### Store the database result set and output it as a JSON string
 
 exampleDatabaseResultSet.go:
@@ -138,7 +171,7 @@ func main() {
 		}
 	}
 
-	// Print  data in JSON format
+	// Print data in JSON format
 	fmt.Printf("Output: %s\n", data.JSONPretty())
 }
 ```

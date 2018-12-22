@@ -8,6 +8,16 @@ import (
 	"github.com/junxie6/flexobj"
 )
 
+func TestSetPrimitiveType(t *testing.T) {
+	data := flexobj.New()
+	data.Set("ExamID", 1)
+	data.Set("ExamName", "this is a 2018 exam")
+	data.Set("IsDone", false)
+
+	// Print data in JSON format
+	fmt.Printf("Output: %s\n", data.JSONPretty())
+}
+
 func TestSetNestedObject(t *testing.T) {
 	// Simulating a database result set
 	sqlRow := []struct {
