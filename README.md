@@ -8,10 +8,16 @@ FlexObj helps storing the nested objects as easy as PHP associative array and ma
 * Decode to a struct
 * Deep clone a FlexObj
 * Iteration
+* Go 1.11 Modules
 
 ## Examples:
 
 ### Storing the nested objects and output in JSON format
+
+```
+$ go get github.com/junxie6/flexobj
+$ go run main.go
+```
 
 main.go:
 
