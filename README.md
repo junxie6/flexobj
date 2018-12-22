@@ -1,6 +1,7 @@
 # FlexObj
 
 [![Build Status](https://travis-ci.org/junxie6/flexobj.svg?branch=master)](https://travis-ci.org/junxie6/flexobj)
+[![codecov](https://codecov.io/gh/junxie6/flexobj/branch/master/graph/badge.svg)](https://codecov.io/gh/junxie6/flexobj)
 [![Go Report Card](https://goreportcard.com/badge/github.com/junxie6/flexobj)](https://goreportcard.com/report/github.com/junxie6/flexobj)
 [![GoDoc](https://godoc.org/github.com/junxie6/flexobj?status.svg)](https://godoc.org/github.com/junxie6/flexobj)
 
