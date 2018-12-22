@@ -13,6 +13,8 @@ FlexObj helps storing the nested objects as easy as PHP associative array and ma
 
 ### Storing the nested objects and output in JSON format
 
+main.go:
+
 ```
 package main
 
@@ -64,6 +66,8 @@ func main() {
 	flexobj.PrintJSON(exam)
 }
 ```
+
+JSON output:
 
 ```
 {
