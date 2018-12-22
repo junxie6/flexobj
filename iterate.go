@@ -33,6 +33,7 @@ func (this *FlexObj) Next() bool {
 	return false
 }
 
+// Increase ...
 func (this *FlexObj) Increase() {
 	this.indexPtr++
 }

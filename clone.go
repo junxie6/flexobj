@@ -4,12 +4,14 @@ import (
 //"fmt"
 )
 
+// Clone ...
 func Clone(src *FlexObj) *FlexObj {
 	dstNew := New()
 	clone(dstNew, src)
 	return dstNew
 }
 
+// clone ...
 func clone(dst *FlexObj, src *FlexObj) {
 	src.Reset()
 

@@ -6,10 +6,12 @@ import (
 	"reflect"
 )
 
+// Decode ...
 func Decode(src *FlexObj, dst interface{}) error {
 	return decode(reflect.ValueOf(src.data), reflect.ValueOf(dst).Elem())
 }
 
+// decode ...
 func decode(src reflect.Value, dst reflect.Value) (err error) {
 	switch src.Kind() {
 	case reflect.Ptr:

@@ -11,13 +11,18 @@ import (
 type DataType uint8
 
 const (
+	// Invalid ...
 	Invalid DataType = iota
+	// Primitive ...
 	Primitive
+	// HashMap ...
 	HashMap
+	// OrderedMap ...
 	OrderedMap
 )
 
 var (
+	// IsDebug ...
 	IsDebug bool
 )
 
@@ -36,6 +41,7 @@ type FlexObj struct {
 	data         map[string]interface{}
 }
 
+// Config ...
 // TODO: not yet
 type Config struct {
 }
@@ -171,6 +177,7 @@ func (this *FlexObj) get(key string) interface{} {
 	return v
 }
 
+// JSON ...
 func (this *FlexObj) JSON() string {
 	var err error
 	var byteArr []byte
@@ -182,6 +189,7 @@ func (this *FlexObj) JSON() string {
 	return string(byteArr)
 }
 
+// JSONPretty ...
 func (this *FlexObj) JSONPretty() string {
 	var err error
 	var byteArr []byte
