@@ -21,7 +21,7 @@ $ go run main.go
 
 main.go:
 
-```
+```go
 package main
 
 import (
@@ -75,7 +75,7 @@ func main() {
 
 JSON output:
 
-```
+```json
 {
     "ExamID": 1,
     "ExamName": "this is a 2018 exam",
