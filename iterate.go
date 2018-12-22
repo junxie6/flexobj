@@ -5,17 +5,17 @@ import (
 )
 
 // Key ...
-func (this FlexObj) Key() string {
+func (this *FlexObj) Key() string {
 	return this.fieldInfoArr[this.indexPtr].key
 }
 
 // DataType ...
-func (this FlexObj) DataType() DataType {
+func (this *FlexObj) DataType() DataType {
 	return this.fieldInfoArr[this.indexPtr].dataType
 }
 
 // Value implements iterator
-func (this FlexObj) Value() interface{} {
+func (this *FlexObj) Value() interface{} {
 	// Read lock
 	this.RLock()
 	defer this.RUnlock()
@@ -25,7 +25,7 @@ func (this FlexObj) Value() interface{} {
 }
 
 // Next implements iterator
-func (this FlexObj) Next() bool {
+func (this *FlexObj) Next() bool {
 	if this.indexPtr < this.numOfField {
 		return true
 	}
@@ -38,13 +38,13 @@ func (this *FlexObj) Increase() {
 }
 
 // Err implements iterator
-func (this FlexObj) Err() error {
+func (this *FlexObj) Err() error {
 	// TODO: to be implemented
 	return nil
 }
 
 // Values ...
-func (this FlexObj) Values() []interface{} {
+func (this *FlexObj) Values() []interface{} {
 	this.Reset()
 
 	valArr := make([]interface{}, 0, this.numOfField)
