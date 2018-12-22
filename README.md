@@ -3,11 +3,11 @@
 FlexObj makes storing the nested objects as easy as PHP associative array and it maintains the insertion order. It is most useful when handling the result data of the SQL database queries.
 
 ## Features:
-* Maintain insertion order
-* Support the output in JSON format (MarshalJSON implements Marshaler)
-* Decode to a struct
+* Maintain the insertion order
+* Output a FlexObj as a JSON string (MarshalJSON implements Marshaler)
+* Decode to a struct (could be used to ensure the correct data type is used)
 * Deep clone a FlexObj
-* Iteration
+* Iterate over a FlexObj using for loop in the insertion order
 * Go 1.11 Modules support
 
 ## Examples:
