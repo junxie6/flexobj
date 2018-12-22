@@ -10,6 +10,22 @@ FlexObj makes storing the nested objects as easy as PHP associative array and it
 * Iterate over a FlexObj using for loop in the insertion order
 * Go 1.11 Modules support
 
+## Installation
+
+1. Download and install FlexObj:
+
+```sh
+$ go get -u github.com/junxie6/flexobj
+```
+
+2. Import FlexObj in your code:
+
+```go
+import (
+	"github.com/junxie6/flexobj"
+)
+```
+
 ## Examples:
 
 ### Store the database result set and output it as a JSON string
