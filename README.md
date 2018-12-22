@@ -4,11 +4,11 @@ FlexObj helps storing the nested objects as easy as PHP associative array and ma
 
 ## Features:
 * Maintain insertion order
-* Output in JSON format
+* Output in JSON format (MarshalJSON implements Marshaler)
 * Decode to a struct
 * Deep clone a FlexObj
 * Iteration
-* Go 1.11 Modules
+* Go 1.11 Modules support
 
 ## Examples:
 
