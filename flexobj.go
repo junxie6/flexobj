@@ -129,7 +129,7 @@ func (this *FlexObj) set(key string, val interface{}, dt DataType) {
 	this.data[key] = val
 }
 
-func (this FlexObj) IsSet(key string) bool {
+func (this *FlexObj) IsSet(key string) bool {
 	// Read lock
 	this.RLock()
 	defer this.RUnlock()
@@ -140,22 +140,22 @@ func (this FlexObj) IsSet(key string) bool {
 }
 
 // Get ...
-func (this FlexObj) Get(key string) interface{} {
+func (this *FlexObj) Get(key string) interface{} {
 	return this.get(key)
 }
 
 // GetObj ...
-func (this FlexObj) GetObj(key string) *FlexObj {
+func (this *FlexObj) GetObj(key string) *FlexObj {
 	return this.get(key).(*FlexObj)
 }
 
 // GetArr ...
-func (this FlexObj) GetArr(key string) *FlexObj {
+func (this *FlexObj) GetArr(key string) *FlexObj {
 	return this.get(key).(*FlexObj)
 }
 
 // get ...
-func (this FlexObj) get(key string) interface{} {
+func (this *FlexObj) get(key string) interface{} {
 	// Read lock
 	this.RLock()
 	defer this.RUnlock()
@@ -171,7 +171,7 @@ func (this FlexObj) get(key string) interface{} {
 	return v
 }
 
-func (this FlexObj) JSON() string {
+func (this *FlexObj) JSON() string {
 	var err error
 	var byteArr []byte
 
@@ -182,7 +182,7 @@ func (this FlexObj) JSON() string {
 	return string(byteArr)
 }
 
-func (this FlexObj) JSONPretty() string {
+func (this *FlexObj) JSONPretty() string {
 	var err error
 	var byteArr []byte
 
