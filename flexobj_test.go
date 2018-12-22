@@ -58,6 +58,8 @@ func TestSetNestedObject(t *testing.T) {
 	}
 
 	//
+	flexobj.IsDebug = true
+
 	data := flexobj.New()
 	examID := ""
 	questionID := ""

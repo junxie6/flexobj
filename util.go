@@ -7,6 +7,7 @@ import (
 	"strconv"
 )
 
+// PrintJSON ...
 func PrintJSON(data interface{}) {
 	// produces neatly indented output
 	if data, err := json.MarshalIndent(data, "", "    "); err != nil {

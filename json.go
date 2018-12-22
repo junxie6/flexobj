@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	//"reflect"
 )
 
 // MarshalJSON implements Marshaler
@@ -21,8 +20,6 @@ func (this FlexObj) MarshalJSON() ([]byte, error) {
 	var fi fieldInfo
 
 	for _, fi = range this.fieldInfoArr {
-		//fmt.Printf("dataType: %v %v\n", fi.key, fi.dataType)
-
 		switch fi.dataType {
 		case Primitive:
 			if byteArr, err = json.Marshal(this.Get(fi.key)); err != nil {

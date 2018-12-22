@@ -7,23 +7,6 @@ import (
 )
 
 func Decode(src *FlexObj, dst interface{}) error {
-	//srcVal := reflect.ValueOf(src)
-	//srcTyp := reflect.TypeOf(src)
-
-	//dstVal := reflect.ValueOf(dst)
-	//dstTyp := reflect.TypeOf(src)
-
-	//fmt.Printf("srcVal: %v: %v\n", srcVal.Kind(), srcVal.Type())
-	//fmt.Printf("srcTyp: %v: %v\n", srcTyp.Kind(), "N/A")
-
-	//fmt.Printf("dstVal: %v: %v\n", dstVal.Kind(), dstVal.Type())
-	//fmt.Printf("dstValElem: %v: %v\n", dstVal.Elem().Kind(), dstVal.Elem().Type())
-
-	//fmt.Printf("dstTyp: %v: %v\n", dstTyp.Kind(), "N/A")
-	//fmt.Printf("dstTypElem: %v: %v\n", dstTyp.Elem().Kind(), "N/A")
-
-	fmt.Printf("======== decode ========\n")
-
 	return decode(reflect.ValueOf(src.data), reflect.ValueOf(dst).Elem())
 }
 
@@ -35,7 +18,8 @@ func decode(src reflect.Value, dst reflect.Value) (err error) {
 			return err
 		}
 	case reflect.Struct:
-		fmt.Printf("HERE HERE HERE struct\n")
+		// TODO: to be implemented
+		fmt.Printf("src.Kind() is reflect.Struct - to be implemented\n")
 	case reflect.Slice:
 		dst.Set(reflect.MakeSlice(dst.Type(), src.Len(), src.Cap()))
 
@@ -51,7 +35,7 @@ func decode(src reflect.Value, dst reflect.Value) (err error) {
 
 			if dstVal.IsValid() != true {
 				// TODO: add some message
-				log.Printf("Error: IsValid\n")
+				log.Printf("Error: dstVal is invalid\n")
 				continue
 			}
 
@@ -69,8 +53,6 @@ func decode(src reflect.Value, dst reflect.Value) (err error) {
 				// Compare a custom type
 				switch srcVal.Elem().Type() {
 				case reflect.TypeOf((*FlexObj)(nil)):
-					//fmt.Printf("OH YES YES YES !!!!!!!!!!!!\n")
-
 					// NOTE: Values() return one result.
 					questionArr := srcVal.Elem().MethodByName("Values").Call([]reflect.Value{})[0]
 

@@ -51,7 +51,7 @@ func New(configArr ...Config) *FlexObj {
 	if config == config {
 	}
 
-	// TODO: maybe we can allow use to set up init data when calling New()
+	// TODO: maybe we can allow user to set up init data when calling New()
 
 	return &FlexObj{
 		fieldInfoArr: make([]fieldInfo, 0),
@@ -103,19 +103,11 @@ func (this *FlexObj) Set(key string, val interface{}) {
 // SetObj implies that the value being set is a hash map (object).
 func (this *FlexObj) SetObj(key string, val *FlexObj) {
 	this.set(key, val, HashMap)
-
-	// TODO: should we provide "SetM" only? (No more SetHM?)
-
-	// TODO: should we return???
-	//return val.(*FlexObj)
 }
 
 // SetArr implies that the value being set is an ordered map (associative array).
 func (this *FlexObj) SetArr(key string, val *FlexObj) {
 	this.set(key, val, OrderedMap)
-
-	// TODO: should we return???
-	//return val.(*FlexObj)
 }
 
 // set ...
@@ -124,7 +116,7 @@ func (this *FlexObj) set(key string, val interface{}, dt DataType) {
 	this.Lock()
 	defer this.Unlock()
 
-	// Note: We do not use IsSet() func in order to avoid the extra lock.
+	// NOTE: We do not use IsSet() func in order to avoid the extra lock.
 	if _, ok := this.data[key]; !ok {
 		this.fieldInfoArr = append(this.fieldInfoArr, fieldInfo{
 			dataType: dt,
@@ -141,6 +133,7 @@ func (this FlexObj) IsSet(key string) bool {
 	this.RLock()
 	defer this.RUnlock()
 
+	//
 	_, ok := this.data[key]
 	return ok
 }
@@ -171,14 +164,6 @@ func (this FlexObj) get(key string) interface{} {
 	var ok bool
 
 	if v, ok = this.data[key]; !ok {
-		// TODO: we should create if not exist???
-		//switch dt {
-		//case HashMap, OrderedMap:
-		//	return New()
-		//default:
-		//	return nil
-		//}
-
 		return nil
 	}
 
