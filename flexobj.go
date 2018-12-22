@@ -67,7 +67,7 @@ func New(configArr ...Config) *FlexObj {
 }
 
 // Set ...
-func (this *FlexObj) Set(key string, val interface{}) {
+func (fo *FlexObj) Set(key string, val interface{}) {
 	if IsDebug == true {
 		// NOTE: Add a DataType check only allow Primitive type and panic
 		switch reflect.ValueOf(val).Kind() {
@@ -104,73 +104,73 @@ func (this *FlexObj) Set(key string, val interface{}) {
 		}
 	}
 
-	this.set(key, val, Primitive)
+	fo.set(key, val, Primitive)
 }
 
 // SetObj implies that the value being set is a hash map (object).
-func (this *FlexObj) SetObj(key string, val *FlexObj) {
-	this.set(key, val, HashMap)
+func (fo *FlexObj) SetObj(key string, val *FlexObj) {
+	fo.set(key, val, HashMap)
 }
 
 // SetArr implies that the value being set is an ordered map (associative array).
-func (this *FlexObj) SetArr(key string, val *FlexObj) {
-	this.set(key, val, OrderedMap)
+func (fo *FlexObj) SetArr(key string, val *FlexObj) {
+	fo.set(key, val, OrderedMap)
 }
 
 // set ...
-func (this *FlexObj) set(key string, val interface{}, dt DataType) {
+func (fo *FlexObj) set(key string, val interface{}, dt DataType) {
 	// ReadWrite lock
-	this.Lock()
-	defer this.Unlock()
+	fo.Lock()
+	defer fo.Unlock()
 
 	// NOTE: We do not use IsSet() func in order to avoid the extra lock.
-	if _, ok := this.data[key]; !ok {
-		this.fieldInfoArr = append(this.fieldInfoArr, fieldInfo{
+	if _, ok := fo.data[key]; !ok {
+		fo.fieldInfoArr = append(fo.fieldInfoArr, fieldInfo{
 			dataType: dt,
 			key:      key,
 		})
-		this.numOfField++
+		fo.numOfField++
 	}
 
-	this.data[key] = val
+	fo.data[key] = val
 }
 
-func (this *FlexObj) IsSet(key string) bool {
+func (fo *FlexObj) IsSet(key string) bool {
 	// Read lock
-	this.RLock()
-	defer this.RUnlock()
+	fo.RLock()
+	defer fo.RUnlock()
 
 	//
-	_, ok := this.data[key]
+	_, ok := fo.data[key]
 	return ok
 }
 
 // Get ...
-func (this *FlexObj) Get(key string) interface{} {
-	return this.get(key)
+func (fo *FlexObj) Get(key string) interface{} {
+	return fo.get(key)
 }
 
 // GetObj ...
-func (this *FlexObj) GetObj(key string) *FlexObj {
-	return this.get(key).(*FlexObj)
+func (fo *FlexObj) GetObj(key string) *FlexObj {
+	return fo.get(key).(*FlexObj)
 }
 
 // GetArr ...
-func (this *FlexObj) GetArr(key string) *FlexObj {
-	return this.get(key).(*FlexObj)
+func (fo *FlexObj) GetArr(key string) *FlexObj {
+	return fo.get(key).(*FlexObj)
 }
 
 // get ...
-func (this *FlexObj) get(key string) interface{} {
+func (fo *FlexObj) get(key string) interface{} {
 	// Read lock
-	this.RLock()
-	defer this.RUnlock()
+	fo.RLock()
+	defer fo.RUnlock()
 
 	//
 	var v interface{}
 	var ok bool
 
-	if v, ok = this.data[key]; !ok {
+	if v, ok = fo.data[key]; !ok {
 		return nil
 	}
 
@@ -178,11 +178,11 @@ func (this *FlexObj) get(key string) interface{} {
 }
 
 // JSON ...
-func (this *FlexObj) JSON() string {
+func (fo *FlexObj) JSON() string {
 	var err error
 	var byteArr []byte
 
-	if byteArr, err = json.Marshal(this); err != nil {
+	if byteArr, err = json.Marshal(fo); err != nil {
 		panic(err.Error())
 	}
 
@@ -190,11 +190,11 @@ func (this *FlexObj) JSON() string {
 }
 
 // JSONPretty ...
-func (this *FlexObj) JSONPretty() string {
+func (fo *FlexObj) JSONPretty() string {
 	var err error
 	var byteArr []byte
 
-	if byteArr, err = json.MarshalIndent(this, "", "    "); err != nil {
+	if byteArr, err = json.MarshalIndent(fo, "", "    "); err != nil {
 		panic(err.Error())
 	}
 

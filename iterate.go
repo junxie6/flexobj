@@ -5,28 +5,28 @@ import (
 )
 
 // Key ...
-func (this *FlexObj) Key() string {
-	return this.fieldInfoArr[this.indexPtr].key
+func (fo *FlexObj) Key() string {
+	return fo.fieldInfoArr[fo.indexPtr].key
 }
 
 // DataType ...
-func (this *FlexObj) DataType() DataType {
-	return this.fieldInfoArr[this.indexPtr].dataType
+func (fo *FlexObj) DataType() DataType {
+	return fo.fieldInfoArr[fo.indexPtr].dataType
 }
 
 // Value implements iterator
-func (this *FlexObj) Value() interface{} {
+func (fo *FlexObj) Value() interface{} {
 	// Read lock
-	this.RLock()
-	defer this.RUnlock()
+	fo.RLock()
+	defer fo.RUnlock()
 
 	//
-	return this.data[this.Key()]
+	return fo.data[fo.Key()]
 }
 
 // Next implements iterator
-func (this *FlexObj) Next() bool {
-	if this.indexPtr < this.numOfField {
+func (fo *FlexObj) Next() bool {
+	if fo.indexPtr < fo.numOfField {
 		return true
 	}
 
@@ -34,31 +34,31 @@ func (this *FlexObj) Next() bool {
 }
 
 // Increase ...
-func (this *FlexObj) Increase() {
-	this.indexPtr++
+func (fo *FlexObj) Increase() {
+	fo.indexPtr++
 }
 
 // Err implements iterator
-func (this *FlexObj) Err() error {
+func (fo *FlexObj) Err() error {
 	// TODO: to be implemented
 	return nil
 }
 
 // Values ...
-func (this *FlexObj) Values() []interface{} {
-	this.Reset()
+func (fo *FlexObj) Values() []interface{} {
+	fo.Reset()
 
-	valArr := make([]interface{}, 0, this.numOfField)
+	valArr := make([]interface{}, 0, fo.numOfField)
 
-	for ; this.Next(); this.Increase() {
-		valArr = append(valArr, this.Value())
+	for ; fo.Next(); fo.Increase() {
+		valArr = append(valArr, fo.Value())
 	}
 
-	this.Reset()
+	fo.Reset()
 	return valArr
 }
 
 // Reset sets the internal pointer of an array to its first element
-func (this *FlexObj) Reset() {
-	this.indexPtr = 0
+func (fo *FlexObj) Reset() {
+	fo.indexPtr = 0
 }
