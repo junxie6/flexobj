@@ -96,6 +96,7 @@ func TestSetNestedObject(t *testing.T) {
 			choice.Set("ChoiceID", row.ChoiceID)
 			choice.Set("ChoiceName", row.ChoiceName)
 			choice.Set("IsSelected", row.IsSelected)
+
 			choiceArr.SetObj(choiceID, choice)
 		}
 	}
