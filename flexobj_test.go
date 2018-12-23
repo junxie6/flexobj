@@ -18,7 +18,7 @@ func TestSetPrimitiveType(t *testing.T) {
 	fmt.Printf("Output: %s\n", data.JSONPretty())
 }
 
-func TestSetHashmap(t *testing.T) {
+func TestSetHashMap(t *testing.T) {
 	data := flexobj.New()
 
 	user := flexobj.New()
@@ -26,6 +26,25 @@ func TestSetHashmap(t *testing.T) {
 	user.Set("UserName", "Bot 1")
 
 	data.SetObj("User", user)
+
+	// Print data in JSON format
+	fmt.Printf("Output: %s\n", data.JSONPretty())
+}
+
+func TestSetOrderedMap(t *testing.T) {
+	data := flexobj.New()
+	questionArr := flexobj.New()
+	data.SetArr("QuestionArr", questionArr)
+
+	q1 := flexobj.New()
+	q1.Set("QuestionID", 1)
+	q1.Set("QuestionName", "What is the best programming language?")
+	questionArr.SetObj("1", q1)
+
+	q2 := flexobj.New()
+	q2.Set("QuestionID", 2)
+	q2.Set("QuestionName", "What is the best editor?")
+	questionArr.SetObj("2", q2)
 
 	// Print data in JSON format
 	fmt.Printf("Output: %s\n", data.JSONPretty())

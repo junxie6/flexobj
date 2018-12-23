@@ -68,7 +68,7 @@ JSON output:
 
 ### Set a hashmap data
 
-exampleSetHashmap.go:
+exampleSetHashMap.go:
 ```go
 package main
 
@@ -105,7 +105,7 @@ JSON output:
 
 ### Set a ordered map data
 
-exampleSetPrimitiveType.go:
+exampleSetOrderedMap.go:
 ```go
 package main
 
@@ -118,9 +118,18 @@ import (
 
 func main() {
 	data := flexobj.New()
-	data.Set("ExamID", 1)
-	data.Set("ExamName", "this is a 2018 exam")
-	data.Set("IsDone", false)
+	questionArr := flexobj.New()
+	data.SetArr("QuestionArr", questionArr)
+
+	q1 := flexobj.New()
+	q1.Set("QuestionID", 1)
+	q1.Set("QuestionName", "What is the best programming language?")
+	questionArr.SetObj("1", q1)
+
+	q2 := flexobj.New()
+	q2.Set("QuestionID", 2)
+	q2.Set("QuestionName", "What is the best editor?")
+	questionArr.SetObj("2", q2)
 
 	// Print data in JSON format
 	fmt.Printf("Output: %s\n", data.JSONPretty())
@@ -129,6 +138,18 @@ func main() {
 
 JSON output:
 ```json
+{
+    "QuestionArr": [
+        {
+            "QuestionID": 1,
+            "QuestionName": "What is the best programming language?"
+        },
+        {
+            "QuestionID": 2,
+            "QuestionName": "What is the best editor?"
+        }
+    ]
+}
 ```
 
 ### Store the database result set and output it as a JSON string
