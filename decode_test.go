@@ -17,6 +17,7 @@ type Exam struct {
 		ChoiceArr    []struct {
 			ChoiceID   uint32
 			ChoiceName string
+			IsSelected uint8
 		}
 	}
 }

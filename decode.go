@@ -37,7 +37,8 @@ func decode(src reflect.Value, dst reflect.Value) (err error) {
 
 			if dstVal.IsValid() != true {
 				// TODO: add some message
-				log.Printf("Error: dstVal is invalid\n")
+				// TODO: should we panic instead (e.g. when field name does not exist?)
+				log.Printf("Error: dstVal is invalid: %s\n", key.String())
 				continue
 			}
 
