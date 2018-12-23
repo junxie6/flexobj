@@ -33,7 +33,7 @@ import (
 
 ## Examples:
 
-### Set primitive type data (boolean, integer, float, string)
+### Set some primitive type data (boolean, integer, float, string)
 
 exampleSetPrimitiveType.go:
 ```go
@@ -64,6 +64,71 @@ JSON output:
     "ExamName": "this is a 2018 exam",
     "IsDone": false
 }
+```
+
+### Set a hashmap data
+
+exampleSetHashmap.go:
+```go
+package main
+
+import (
+	"fmt"
+)
+import (
+	"github.com/junxie6/flexobj"
+)
+
+func main() {
+	data := flexobj.New()
+
+	user := flexobj.New()
+	user.Set("UserID", 5)
+	user.Set("UserName", "Bot 1")
+
+	data.SetObj("User", user)
+
+	// Print data in JSON format
+	fmt.Printf("Output: %s\n", data.JSONPretty())
+}
+```
+
+JSON output:
+```json
+{
+    "User": {
+        "UserID": 5,
+        "UserName": "Bot 1"
+    }
+}
+```
+
+### Set a ordered map data
+
+exampleSetPrimitiveType.go:
+```go
+package main
+
+import (
+	"fmt"
+)
+import (
+	"github.com/junxie6/flexobj"
+)
+
+func main() {
+	data := flexobj.New()
+	data.Set("ExamID", 1)
+	data.Set("ExamName", "this is a 2018 exam")
+	data.Set("IsDone", false)
+
+	// Print data in JSON format
+	fmt.Printf("Output: %s\n", data.JSONPretty())
+}
+```
+
+JSON output:
+```json
 ```
 
 ### Store the database result set and output it as a JSON string

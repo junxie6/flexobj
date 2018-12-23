@@ -18,6 +18,19 @@ func TestSetPrimitiveType(t *testing.T) {
 	fmt.Printf("Output: %s\n", data.JSONPretty())
 }
 
+func TestSetHashmap(t *testing.T) {
+	data := flexobj.New()
+
+	user := flexobj.New()
+	user.Set("UserID", 5)
+	user.Set("UserName", "Bot 1")
+
+	data.SetObj("User", user)
+
+	// Print data in JSON format
+	fmt.Printf("Output: %s\n", data.JSONPretty())
+}
+
 func TestSetNestedObject(t *testing.T) {
 	// Simulating a database result set
 	sqlRow := []struct {
