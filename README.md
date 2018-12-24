@@ -9,7 +9,7 @@ FlexObj makes storing the nested objects as easy as PHP associative array and it
 
 ## Why?
 
-I wanted to store the SQL database result set as a list of the nested objects in golang while maintaining the insertion order (especially when generating the reports). Then, outputs the data as a JSON string to the browser (JavaScript). Go's built-in hashmap does not keep the insertion order and require type assertion when retrieving the nested objects (which makes the codes look more verbose). So, I built this tool to resolve my needs.
+I wanted to store the SQL database result set as a list of the nested objects in golang while maintaining the insertion order (especially when generating the reports). Then, outputs the data as a JSON string to the browser (JavaScript). Go's built-in hashmap does not keep the insertion order and require type assertion when retrieving the nested objects (which makes the codes look more verbose). So, I builded this tool to resolve my needs.
 
 ## Features:
 - Maintain the insertion order
