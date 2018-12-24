@@ -1,9 +1,5 @@
 package flexobj
 
-import (
-//"fmt"
-)
-
 // Clone ...
 func Clone(src *FlexObj) *FlexObj {
 	dstNew := New()
