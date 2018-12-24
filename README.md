@@ -5,14 +5,19 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/junxie6/flexobj)](https://goreportcard.com/report/github.com/junxie6/flexobj)
 [![GoDoc](https://godoc.org/github.com/junxie6/flexobj?status.svg)](https://godoc.org/github.com/junxie6/flexobj)
 
-FlexObj makes storing the nested objects as easy as PHP associative array and it maintains the insertion order. It is most useful when handling the SQL database result set.
+FlexObj makes storing the nested objects as easy as PHP associative array and it maintains the insertion order. It is most useful when handling the SQL database result set in golang.
+
+## Why?
+
+I wanted to store the SQL database result set as a list of the nested objects in golang while maintaining the insertion order (especially when generating the reports). Then, outputs the data as a JSON string to the browser (JavaScript). Go's built-in hashmap does not keep the insertion order and require type assertion when retrieving the nested objects (which makes the codes look more verbose). So, I built this tool to resolve my needs.
 
 ## Features:
 - Maintain the insertion order
-- Output a FlexObj as a JSON string (MarshalJSON implements Marshaler)
-- Decode from a FlexObj to a struct (could be used to ensure the correct data type is used)
-- Deep clone a FlexObj
-- Iterate over a FlexObj using for loop in the insertion order
+- Output a FlexObj instance as a JSON string (MarshalJSON implements Marshaler)
+- Decode from a FlexObj instance to a struct (could be used to ensure the correct data type is used)
+- Deep clone from a FlexObj instance
+- Insertion-order iteration over the FlexObj instance
+- No type assertion is required when retrieving a nested object
 - Go 1.11 Modules support
 
 ## Installation
