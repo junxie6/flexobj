@@ -23,6 +23,9 @@ go-test-clone:
 go-test-cover:
 	set -o pipefail; cd $(ROOT_DIR) && go test -v -count 1 -cover -mod vendor $(APP_NAME)/...
 
+go-test-codecov:
+	set -o pipefail; cd $(ROOT_DIR) && go test -v -count 1 -race -coverprofile=coverage.txt -covermode=atomic -mod vendor $(APP_NAME)/...
+
 go-tidy:
 	set -o pipefail; cd $(ROOT_DIR) && go mod tidy -v
 
