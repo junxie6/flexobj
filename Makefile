@@ -20,6 +20,9 @@ go-test-decode:
 go-test-clone:
 	@set -o pipefail; cd $(ROOT_DIR) && go test -v -count 1 -mod vendor -race -run="Clone" $(APP_NAME)/...
 
+go-test-iteration:
+	@set -o pipefail; cd $(ROOT_DIR) && go test -v -count 1 -mod vendor -race -run="Iteration" $(APP_NAME)/...
+
 go-test-cover:
 	set -o pipefail; cd $(ROOT_DIR) && go test -v -count 1 -cover -mod vendor $(APP_NAME)/...
 

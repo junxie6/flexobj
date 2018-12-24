@@ -397,3 +397,78 @@ JSON output:
     ]
 }
 ```
+
+### Clone
+
+exampleClone.go:
+```go
+package main
+
+import (
+	"fmt"
+)
+import (
+	"github.com/junxie6/flexobj"
+)
+
+func main() {
+	// Exam
+	exam := flexobj.New()
+	exam.Set("ExamID", 123456)
+	exam.Set("ExamName", "this is a 2018 exam")
+
+	// Clone data
+	examCloned := flexobj.Clone(exam)
+
+	// Set some value
+	exam.Set("ExamName", "this is a 2019 exam")
+
+	// Print exam data in JSON format
+	fmt.Printf("exam: %s\n", exam.JSONPretty())
+	fmt.Printf("examCloned: %s\n", examCloned.JSONPretty())
+}
+```
+
+Output:
+```
+exam: {
+    "ExamID": 123456,
+    "ExamName": "this is a 2019 exam"
+}
+examCloned: {
+    "ExamID": 123456,
+    "ExamName": "this is a 2018 exam"
+}
+```
+
+### Iteration
+
+exampleIteration.go:
+```go
+package main
+
+import (
+	"fmt"
+)
+import (
+	"github.com/junxie6/flexobj"
+)
+
+func main() {
+	// Exam
+	exam := flexobj.New()
+	exam.Set("ExamID", 123456)
+	exam.Set("ExamName", "this is a 2018 exam")
+
+	// Interation
+	for ; exam.Next(); exam.Increase() {
+		fmt.Printf("%v: %v\n", exam.Key(), exam.Value())
+	}
+}
+```
+
+Output:
+```
+ExamID: 123456
+ExamName: this is a 2018 exam
+```
