@@ -1,7 +1,9 @@
+### Reference:
+### https://docs.travis-ci.com/user/languages/go/
 language: go
 
 go:
-  - 1.11.x
+  - "1.11.x"
   - master
 
 os:

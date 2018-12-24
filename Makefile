@@ -4,6 +4,9 @@ ROOT_DIR = $(CURDIR)
 
 APP_NAME = github.com/junxie6/flexobj
 
+# default targets to run when only running `make`
+default: go-test
+
 # NOTE: -count 1 to disable go test cache
 go-test:
 	set -o pipefail; cd $(ROOT_DIR) && go test -v -count 1 -mod vendor -race $(APP_NAME)/...
