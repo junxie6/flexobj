@@ -18,6 +18,8 @@ matrix:
 
 os:
   - linux
+  - osx
+  - windows
 
 script:
   - make go-test-codecov
