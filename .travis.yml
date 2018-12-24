@@ -2,6 +2,8 @@
 ### https://docs.travis-ci.com/user/languages/go/
 language: go
 
+sudo: false
+
 go:
   - "1.11.x"
   - master
