@@ -4,9 +4,9 @@ language: go
 
 sudo: false
 
-go:
-  - "1.11.x"
-  - "master"
+#go:
+#  - "1.11.x"
+#  - "master"
 
 matrix:
   fast_finish: true
