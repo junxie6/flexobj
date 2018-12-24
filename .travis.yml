@@ -6,12 +6,14 @@ sudo: false
 
 go:
   - "1.11.x"
-  - master
+  - "master"
 
 matrix:
   fast_finish: true
   include:
   - go: "1.11.x"
+    env: GO111MODULE=on
+  - go: "master"
     env: GO111MODULE=on
 
 os:
