@@ -4,22 +4,25 @@ language: go
 
 sudo: false
 
-#go:
-#  - "1.11.x"
-#  - "master"
+env:
+  - GO111MODULE=on
 
-matrix:
-  fast_finish: true
-  include:
-  - go: "1.11.x"
-    env: GO111MODULE=on
-  - go: "master"
-    env: GO111MODULE=on
+go:
+  - "1.11.x"
+  - "master"
 
 os:
   - linux
   - osx
   - windows
+
+#matrix:
+#  fast_finish: true
+#  include:
+#  - go: "1.11.x"
+#    env: GO111MODULE=on
+#  - go: "master"
+#    env: GO111MODULE=on
 
 script:
   - make go-test-codecov
