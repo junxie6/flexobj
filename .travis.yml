@@ -14,7 +14,7 @@ go:
 os:
   - linux
   - osx
-  - windows
+  #- windows
 
 #matrix:
 #  fast_finish: true
